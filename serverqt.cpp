@@ -7,8 +7,12 @@ ServerQt::ServerQt(QWidget *parent)
 {
     ui->setupUi(this);
     initServer();
+    /**
+    * Connect(Que objeto, es el objeto del cliente(signal), que objeto, es el objeto del servidor(slot) )
+    * los argumentos son punteros.
+    * si detecta que alguien manda una señal(signal) de conexión, el servidor responde con el slot
+    */
     connect(ui->btnClose, &QAbstractButton::clicked, this, &QWidget::close);
-    // si detecta que alguien manda una señal de coneccion, el servidor responde con el slot
     connect(serverSocket, &QTcpServer::newConnection, this, &ServerQt::sendRandonMessage);
 }
 
